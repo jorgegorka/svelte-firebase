@@ -1,0 +1,8 @@
+.error-message {
+  min-height: 1em;
+  background-color: white;
+  color: #ff3860;
+  padding: 0.2rem;
+  font-size: 0.8em;
+  border-radius: 4px;
+}
