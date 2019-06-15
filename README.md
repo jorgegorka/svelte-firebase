@@ -36,6 +36,8 @@ const config = {
 }
 ```
 
+Update .firebaserc with your project ID
+
 Launch the development server
 
 ```bash
@@ -48,7 +50,7 @@ Enjoy
 
 ## Credits
 
-Svelte-Firebase has been developed by [Jorge Alvarez](https://www.alvareznavarro.es).
+Svelte-Firebase has been created by [Jorge Alvarez](https://www.alvareznavarro.es).
 
 ## License
 
