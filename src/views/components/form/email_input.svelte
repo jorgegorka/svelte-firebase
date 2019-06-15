@@ -1,5 +1,5 @@
 <script>
-  export let name = 'email'
+  export let inputName = 'email'
   export let id = 'email'
   export let label = 'E-Mail'
   export let value = ''
@@ -16,7 +16,7 @@
       bind:value
       on:input={() => (error = false)}
       type="email"
-      {name}
+      name={inputName}
       {id}
       class="input "
       class:is-danger={error}

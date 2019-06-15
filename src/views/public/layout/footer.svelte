@@ -11,7 +11,6 @@
       <strong>Svelte & Firebase</strong>
       by
       <a href="https://www.alvareznavarro.es">Jorge alvarez</a>
-      . Svelte | Firebase | Bulma | Svelte router
     </p>
   </div>
 </footer>

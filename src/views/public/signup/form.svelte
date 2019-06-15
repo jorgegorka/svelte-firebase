@@ -1,15 +1,21 @@
 <script>
+  import { navigateTo } from 'svelte-router-spa'
   import validate from 'validate.js'
+  import { Auth, Functions } from '../../../config/firebase'
+
   import TextInput from '../../components/form/text_input.svelte'
   import PasswordInput from '../../components/form/password_input.svelte'
   import EmailInput from '../../components/form/email_input.svelte'
   import FormButtons from '../../components/form/buttons.svelte'
   import { notificationMessage } from '../../../stores/notification_message.js'
-  import { Auth } from '../../../config/firebase'
 
-  const loginConstraints = {
+  const signupConstraints = {
     name: {
-      presence: true
+      presence: true,
+      length: {
+        minimum: 4,
+        message: 'must be at least 4 characters'
+      }
     },
     email: {
       presence: true,
@@ -46,10 +52,11 @@
 
   const validateLoginForm = () => {
     resetErrorInfo()
-    const validationResult = validate({ email, password }, loginConstraints)
+    const validationResult = validate({ name, email, password }, signupConstraints)
     if (!validationResult) {
       return true
     } else {
+      console.log(validationResult, { name, email, password })
       if (validationResult.email && validationResult.email.length > 0) {
         emailMessage = validationResult.email[0]
         emailError = true
@@ -73,8 +80,22 @@
     if (validateLoginForm()) {
       const { user } = await Auth.createUserWithEmailAndPassword(email, password)
       if (user) {
-        // There is a new user
-        console.log(user)
+        const createCompany = Functions.httpsCallable('createCompany')
+        createCompany({ companyName: name })
+          .then(() => {
+            notificationMessage.set({
+              message: 'Your account was created successfully. Please log in',
+              type: 'is-success'
+            })
+            // We logout the user to generate a new jwt with right token info
+            Auth.signOut().then(() => {
+              navigateTo('/login')
+            })
+          })
+          .catch(error => {
+            notificationMessage.set({ message: error.message, type: 'is-danger' })
+            console.log(error)
+          })
       }
     } else {
       disableAction = false
@@ -86,5 +107,5 @@
   <TextInput bind:value={name} error={nameError} label="Your name" isFocused={true} errorMessage={nameMessage} />
   <EmailInput bind:value={email} error={emailError} errorMessage={emailMessage} />
   <PasswordInput bind:value={password} error={passwordError} errorMessage={passwordMessage} />
-  <FormButtons cancelButton={false} submitText="Login" isLoading={disableAction} />
+  <FormButtons cancelButton={false} submitText="Create account" isLoading={disableAction} />
 </form>

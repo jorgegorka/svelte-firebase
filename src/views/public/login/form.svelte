@@ -1,4 +1,5 @@
 <script>
+  import { navigateTo } from 'svelte-router-spa'
   import validate from 'validate.js'
   import PasswordInput from '../../components/form/password_input.svelte'
   import EmailInput from '../../components/form/email_input.svelte'

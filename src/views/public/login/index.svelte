@@ -1,5 +1,5 @@
 <script>
-  import { Navigate, navigateTo } from 'svelte-router-spa'
+  import { Navigate } from 'svelte-router-spa'
 
   import LoginForm from './form.svelte'
 </script>

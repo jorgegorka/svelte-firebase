@@ -17,7 +17,8 @@
     "autobuild": "rollup -c -w",
     "dev": "run-p start:dev autobuild",
     "start": "sirv public",
-    "start:dev": "sirv public -s --dev"
+    "start:dev": "sirv public -s --dev",
+    "deploy": "yarn build && firebase deploy"
   },
   "dependencies": {
     "bulma-toast": "^1.5.1",

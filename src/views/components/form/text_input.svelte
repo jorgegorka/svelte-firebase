@@ -1,5 +1,5 @@
 <script>
-  export let name = 'text'
+  export let inputName = 'text'
   export let id = 'text'
   export let label = ''
   export let value = ''
@@ -16,7 +16,7 @@
       bind:value
       on:input={() => (error = false)}
       type="text"
-      {name}
+      name={inputName}
       {id}
       class="input"
       class:is-danger={error}

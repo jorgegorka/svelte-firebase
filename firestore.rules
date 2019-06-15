@@ -1,7 +1,43 @@
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write;
+    match /companies/{companyId} {
+      allow read: if isSignedIn() && userBelongsToCompany();
+      allow create: if userAndAdmin();
+      allow update, delete: if companyAdmin()
     }
+  }
+
+  match /employees/{employeeId} {
+    allow read: if isSignedIn() && adminOrEmployee();
+    allow create: if companyAdmin();
+    allow update, delete: if companyAdmin()
+  }
+
+  function isSignedIn() {
+    return (request.auth.uid != null)
+  }
+
+  function userIsAdmin() {
+    return request.auth.token.role == 'admin'
+  }
+
+  function userBelongsToCompany() {
+    return request.auth.token.companyId == resource.data.companyId
+  }
+
+  function userAndAdmin() {
+    return isSignedIn() && userIsAdmin()
+  }
+
+  function companyAdmin() {
+    return userAndAdmin() && userBelongsToCompany()
+  }
+
+  function adminOrEmployee() {
+    return userBelongsToCompany() && (userIsAdmin() || resource.data.id == request.auth.uid)
+  }
+
+  function adminOrOwner() {
+    return userBelongsToCompany() && (userIsAdmin() || resource.data.employeeId == request.auth.uid)
   }
 }

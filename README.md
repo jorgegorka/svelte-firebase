@@ -25,6 +25,8 @@ Add your Firebase configuration info to
 _src/config/firebase.js_ (If you don't have a Firebase project you can create one in the
 [Firebase website](https://firebase.google.com/)
 
+Activate cloud firestore, storage and hosting in the Firebase console
+
 ```javascript
 const config = {
   apiKey: '',
@@ -45,6 +47,14 @@ yarn dev
 ```
 
 Visit http://localhost:5000
+
+### Deployment
+
+To deploy your app to Firebase. Rembember to activate cloud firestore, storage and hosting in the Firebase console.
+
+```bash
+yarn deploy
+```
 
 Enjoy
 
