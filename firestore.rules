@@ -5,13 +5,15 @@ service cloud.firestore {
       allow create: if userAndAdmin();
       allow update, delete: if companyAdmin()
     }
+
+    match /employees/{employeeId} {
+      allow read: if isSignedIn() && adminOrEmployee();
+      allow create: if companyAdmin();
+      allow update, delete: if companyAdmin()
+    }
   }
 
-  match /employees/{employeeId} {
-    allow read: if isSignedIn() && adminOrEmployee();
-    allow create: if companyAdmin();
-    allow update, delete: if companyAdmin()
-  }
+
 
   function isSignedIn() {
     return (request.auth.uid != null)
