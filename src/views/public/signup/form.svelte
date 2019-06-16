@@ -56,7 +56,6 @@
     if (!validationResult) {
       return true
     } else {
-      console.log(validationResult, { name, email, password })
       if (validationResult.email && validationResult.email.length > 0) {
         emailMessage = validationResult.email[0]
         emailError = true

@@ -5,7 +5,6 @@ import { Employees } from '../database/employees'
 Auth.onAuthStateChanged(() => {
   if (Auth.currentUser) {
     const userInfo = {
-      displayName: Auth.currentUser.displayName,
       email: Auth.currentUser.email,
       id: Auth.currentUser.uid,
       phoneNumber: Auth.currentUser.phoneNumber,
@@ -15,6 +14,7 @@ Auth.onAuthStateChanged(() => {
     Employees.findOne(Auth.currentUser.uid).then(doc => {
       userInfo.employee = doc.data()
       userInfo.employee.id = doc.id
+      userInfo.displayName = userInfo.employee.name
 
       Auth.currentUser.getIdTokenResult().then(idToken => {
         userInfo.companyId = idToken.claims.companyId
