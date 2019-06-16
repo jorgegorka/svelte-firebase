@@ -1881,9 +1881,9 @@ rollup-pluginutils@^2.3.3, rollup-pluginutils@^2.6.0:
     estree-walker "^0.6.1"
 
 rollup@^1.10.1:
-  version "1.15.5"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.15.5.tgz#1c1f7ef799d5b297aab6eb49ca7a6ab9c8aae6a0"
-  integrity sha512-Dix1YCY6BlsVK20SjQHBjKqxW2K+lqNr6BlCKxtdZuYqmUWLm8NzKHdrJyiFFjUO2hSI4wiC7apE+jAkDA3fEQ==
+  version "1.15.6"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.15.6.tgz#caf0ed28d2d78e3a59c1398e5a3695fb600a0ef0"
+  integrity sha512-s3Vn3QJQ5YVFfIG4nXoG9VdL1I37IZsft+4ZyeBhxE0df1kCFz9e+4bEAbR4mKH3pvBO9e9xjdxWPhhIp0r9ow==
   dependencies:
     "@types/estree" "0.0.39"
     "@types/node" "^12.0.8"
@@ -2182,10 +2182,10 @@ supports-color@^6.1.0:
   dependencies:
     has-flag "^3.0.0"
 
-svelte-router-spa@^1.0.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/svelte-router-spa/-/svelte-router-spa-1.1.0.tgz#cd19c261a6ce9ae6f0ce305ac6ca0f16d926dc09"
-  integrity sha512-y5jcYz7jcMxOoPHbrg0taOwhP50RUJErbOf1ly573ZFggzpewt4wnOApvpEMM8VclPj8k2W9hSamYAZqeL3CEQ==
+svelte-router-spa@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/svelte-router-spa/-/svelte-router-spa-1.2.0.tgz#56f38fcd028fd0b58cc654011450b0e2652e740a"
+  integrity sha512-qkw0Won/5g2sfU1mrG6fqVbI6ib482LbxhW8RslWCxoBA3arcTtmyHl9raFf8SifdqTXASi8Def8jBwhz9D/MQ==
   dependencies:
     svelte "^3.5.1"
 
@@ -2302,10 +2302,10 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-validate.js@^0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/validate.js/-/validate.js-0.12.0.tgz#17f989e37c192ea2f826bbf19bf4e97e6e4be68f"
-  integrity sha512-/x2RJSvbqEyxKj0RPN4xaRquK+EggjeVXiDDEyrJzsJogjtiZ9ov7lj/svVb4DM5Q5braQF4cooAryQbUwOxlA==
+validate.js@^0.13.0:
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/validate.js/-/validate.js-0.13.1.tgz#b58bfac04a0f600a340f62e5227e70d95971e92a"
+  integrity sha512-PnFM3xiZ+kYmLyTiMgTYmU7ZHkjBZz2/+F0DaALc/uUtVzdCt1wAosvYJ5hFQi/hz8O4zb52FQhHZRC+uVkJ+g==
 
 websocket-driver@>=0.5.1:
   version "0.7.3"

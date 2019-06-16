@@ -23,7 +23,7 @@
   "dependencies": {
     "bulma-toast": "^1.5.1",
     "firebase": "^6.1.1",
-    "svelte-router-spa": "^1.0.0",
-    "validate.js": "^0.12.0"
+    "svelte-router-spa": "^1.2.0",
+    "validate.js": "^0.13.0"
   }
 }
