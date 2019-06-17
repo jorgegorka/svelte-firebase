@@ -2183,9 +2183,9 @@ supports-color@^6.1.0:
     has-flag "^3.0.0"
 
 svelte-router-spa@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/svelte-router-spa/-/svelte-router-spa-1.2.0.tgz#56f38fcd028fd0b58cc654011450b0e2652e740a"
-  integrity sha512-qkw0Won/5g2sfU1mrG6fqVbI6ib482LbxhW8RslWCxoBA3arcTtmyHl9raFf8SifdqTXASi8Def8jBwhz9D/MQ==
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/svelte-router-spa/-/svelte-router-spa-1.2.1.tgz#2857ab6aa40ba1d557fd61a2a577e0d06eef02dd"
+  integrity sha512-RLFOR30ZNOcXGxd16E39jBCTK08kGRv88tdohdH0mkxPc/2u5fdZjRlhFVonsbAlUmqixQpwjQLMa7VtzJTQbA==
   dependencies:
     svelte "^3.5.1"
 
