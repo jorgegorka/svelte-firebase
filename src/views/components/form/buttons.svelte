@@ -21,7 +21,7 @@
 
 <div class="field form-buttons">
   {#if cancelButton}
-    <button type="button" on:click={cancelAction} class="button cancel is-outlined">{cancelText}</button>
+    <button type="button" on:click={cancelAction} class="btn cancel is-outlined">{cancelText}</button>
   {/if}
-  <button type="submit" class="button is-success" class:is-loading={isLoading}> {submitText} </button>
+  <button type="submit" class="btn is-success" class:is-loading={isLoading}> {submitText} </button>
 </div>

@@ -10,21 +10,25 @@
   }
 </style>
 
-<section>
+<main>
   <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-5-tablet is-4-desktop is-3-widescreen">
-        <h3 class="has-text-centered is-size-3">Svelte & Firebase</h3>
-        <div class="box">
-          <div class="field has-text-centered">
-            <p class="is-size-5">Access your account</p>
+    <div class="row">
+      <div class="col s8 offset-s2">
+        <div class="card card-login">
+          <div class="card-login-splash">
+            <div class="wrapper">
+              <h3>Svelte & Firebase</h3>
+            </div>
           </div>
-          <LoginForm />
-          <div class="field bottom-text">
-            <Navigate to="signup">Create an account.</Navigate>
+          <div class="card-content">
+            <span class="card-title">Log In</span>
+            <LoginForm />
+            <p>
+              <Navigate to="signup">Create an account.</Navigate>
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</main>
