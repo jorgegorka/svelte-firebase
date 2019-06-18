@@ -6,7 +6,7 @@ import './middleware/users/auth'
 
 SpaRouter({
   routes,
-  pathName: document.location.pathname,
+  pathName: document.location.href,
   notFound: NotFound
 }).getActiveRoute
 

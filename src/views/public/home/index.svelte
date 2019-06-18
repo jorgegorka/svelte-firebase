@@ -7,11 +7,15 @@
   import Technology from './technology.svelte'
   import Footer from './footer.svelte'
 
-  onMount(() => {
-    const elems = document.querySelectorAll('.parallax')
-    const instances = M.Parallax.init(elems, {})
-  })
+  const elems = document.querySelectorAll('.parallax')
+  M.Parallax.init(elems, {})
 </script>
+
+<style>
+  .parallax {
+    height: 750px;
+  }
+</style>
 
 <main>
   <div class="parallax-container">
@@ -21,7 +25,7 @@
   </div>
   <div class="section white">
     <div class="row container">
-      <h2 class="header">Parallax</h2>
+      <h2 class="header">Parallaxxx</h2>
       <p class="grey-text text-darken-3 lighten-3">
         Parallax is an effect where the background content or image in this case, is moved at a different speed than the
         foreground content while scrolling.
