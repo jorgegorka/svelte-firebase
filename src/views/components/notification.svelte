@@ -1,20 +1,19 @@
 <script>
   import { notificationMessage } from '../../stores/notification_message.js'
-  import bulmaToast from 'bulma-toast'
 
   export let visible = false
   export let notification = ''
 
   // notificationMessage.set({})
 
-  $: if (visible) {
-    bulmaToast.toast({
-      message: notification.message,
-      type: notification.type || 'is-primary',
-      position: 'top-center',
-      dismissible: true,
-      pauseOnHover: true,
-      duration: 6000
-    })
-  }
+  // $: if (visible) {
+  //   bulmaToast.toast({
+  //     message: notification.message,
+  //     type: notification.type || 'is-primary',
+  //     position: 'top-center',
+  //     dismissible: true,
+  //     pauseOnHover: true,
+  //     duration: 6000
+  //   })
+  // }
 </script>
