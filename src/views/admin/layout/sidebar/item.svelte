@@ -1,5 +1,5 @@
 <script>
-  import { currentRoute } from 'svelte-router-spa'
+  import { routeIsActive } from 'svelte-router-spa'
 
   export let item = {}
 </script>
@@ -26,7 +26,7 @@
 </style>
 
 <li class="sidebar-item">
-  <a href={item.to} class="sidebar-link" class:is-active={currentRoute(item.to)}>
+  <a href={item.to} class="sidebar-link" class:active={routeIsActive(item.to)}>
     <span class="icon">
       <i class="fa {item.icon}" />
     </span>

@@ -5,25 +5,30 @@
 </script>
 
 <style>
-  .bottom-text {
-    margin-top: 1em;
+  .mt10 {
+    padding-top: 1rem;
   }
 </style>
 
-<section>
-  <div class="columns is-centered">
-    <div class="column is-6-tablet is-5-desktop is-4-widescreen">
-      <h3 class="has-text-centered is-size-3">Svelte & Firebase</h3>
-      <div class="box">
-        <div class="field has-text-centered">
-          <p class="is-size-5">Create your account</p>
-        </div>
-        <SignupForm />
-        <div class="field bottom-text">
-          <Navigate to="login">Already have an account? Log in</Navigate>
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col s8 offset-s2">
+        <div class="card card-login">
+          <div class="card-login-splash">
+            <div class="wrapper">
+              <h3 class="center-align mt10">Svelte & Firebase</h3>
+            </div>
+          </div>
+          <div class="card-content">
+            <span class="card-title center-align">Create your account</span>
+            <SignupForm />
+            <p>
+              <Navigate to="login">Already have an account? Log in</Navigate>
+            </p>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
-</section>
+</main>

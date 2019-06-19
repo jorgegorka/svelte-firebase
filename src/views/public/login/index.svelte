@@ -5,8 +5,8 @@
 </script>
 
 <style>
-  .bottom-text {
-    margin-top: 1em;
+  .mt10 {
+    padding-top: 1rem;
   }
 </style>
 
@@ -17,11 +17,11 @@
         <div class="card card-login">
           <div class="card-login-splash">
             <div class="wrapper">
-              <h3>Svelte & Firebase</h3>
+              <h3 class="center-align mt10">Svelte & Firebase</h3>
             </div>
           </div>
           <div class="card-content">
-            <span class="card-title">Log In</span>
+            <span class="card-title center-align">Log In</span>
             <LoginForm />
             <p>
               <Navigate to="signup">Create an account.</Navigate>
