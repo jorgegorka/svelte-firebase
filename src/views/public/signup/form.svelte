@@ -84,7 +84,7 @@
           .then(() => {
             notificationMessage.set({
               message: 'Your account was created successfully. Please log in',
-              type: 'is-success'
+              type: 'success-toast'
             })
             // We logout the user to generate a new jwt with right token info
             Auth.signOut().then(() => {
@@ -92,7 +92,7 @@
             })
           })
           .catch(error => {
-            notificationMessage.set({ message: error.message, type: 'is-danger' })
+            notificationMessage.set({ message: error.message, type: 'danger-toast' })
             console.log(error)
           })
       }

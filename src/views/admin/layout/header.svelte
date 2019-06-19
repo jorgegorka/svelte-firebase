@@ -2,12 +2,16 @@
   import { onMount } from 'svelte'
 
   onMount(() => {
-    console.log('header mounted')
-
     const elems = document.querySelectorAll('.sidenav')
     M.Sidenav.init(elems, {})
   })
 </script>
+
+<style>
+  .brand-logo {
+    padding-left: 1rem;
+  }
+</style>
 
 <nav>
   <div class="nav-wrapper">
@@ -20,24 +24,15 @@
     </a>
     <ul class="right hide-on-med-and-down">
       <li>
-        <a href="/admin/employees">Employees</a>
-      </li>
-      <li>
-        <a href="/admin/settings">Settings</a>
+        <a href="/admin">
+          <i class="material-icons left">settings</i>
+          Settings
+        </a>
       </li>
     </ul>
   </div>
 </nav>
 <ul class="sidenav" id="mobile-demo">
-  <li>
-    <a href="sass.html">Sass</a>
-  </li>
-  <li>
-    <a href="badges.html">Components</a>
-  </li>
-  <li>
-    <a href="collapsible.html">Employees</a>
-  </li>
   <li>
     <a href="mobile.html">Settings</a>
   </li>

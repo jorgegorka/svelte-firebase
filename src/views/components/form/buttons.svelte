@@ -3,9 +3,13 @@
   export let cancelButton = true
   export let submitText = 'Submit'
   export let isLoading = false
+  import { createEventDispatcher } from 'svelte'
+
+  const dispatch = createEventDispatcher()
+
   const cancelAction = event => {
     event.preventDefault()
-    return true
+    dispatch('cancel')
   }
 </script>
 

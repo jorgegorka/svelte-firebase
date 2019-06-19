@@ -61,12 +61,12 @@
     if (validateLoginForm()) {
       Auth.signInWithEmailAndPassword(email, password)
         .then(() => {
-          notificationMessage.set({ message: 'Welcome back!', type: 'is-success' })
+          notificationMessage.set({ message: 'Welcome back!', type: 'success-toast' })
           disableAction = false
           navigateTo('admin')
         })
         .catch(error => {
-          notificationMessage.set({ message: error.message, type: 'is-danger' })
+          notificationMessage.set({ message: error.message, type: 'danger-toast' })
           disableAction = false
         })
     } else {
