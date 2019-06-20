@@ -1,9 +1,9 @@
 <script>
   import { navigateTo } from 'svelte-router-spa'
   import validate from 'validate.js'
-  import PasswordInput from '../../components/form/password_input.svelte'
-  import EmailInput from '../../components/form/email_input.svelte'
-  import FormButtons from '../../components/form/buttons.svelte'
+  import PasswordInput from '../../components/forms/password_input.svelte'
+  import EmailInput from '../../components/forms/email_input.svelte'
+  import FormButtons from '../../components/forms/buttons.svelte'
   import { notificationMessage } from '../../../stores/notification_message.js'
   import { Auth } from '../../../config/firebase'
 

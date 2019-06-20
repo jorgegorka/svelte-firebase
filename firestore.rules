@@ -6,6 +6,12 @@ service cloud.firestore {
       allow update, delete: if companyAdmin()
     }
 
+    match /teams/{teamId} {
+      allow read: if isSignedIn() && adminOrEmployee();
+      allow create: if companyAdmin();
+      allow update, delete: if companyAdmin()
+    }
+
     match /employees/{employeeId} {
       allow read: if isSignedIn() && adminOrEmployee();
       allow create: if companyAdmin();

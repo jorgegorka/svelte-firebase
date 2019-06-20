@@ -17,7 +17,6 @@ exports.createCompany = functions.region('europe-west1').https.onCall(async (dat
     throw new functions.https.HttpsError('not-found')
   }
   const userId = context.auth.uid
-  console.log(userId)
 
   await admin.auth().setCustomUserClaims(userId, { role: 'admin' })
 
@@ -86,3 +85,26 @@ exports.createEmployee = functions.region('europe-west1').https.onCall(async (da
       return 'ok'
     })
 })
+
+exports.teamCreate = functions
+  .region('europe-west1')
+  .firestore.document('teams/{teamId}')
+  .onCreate((snapshot, _context) => {
+    const newTeam = snapshot.data()
+    const teamRef = snapshot.ref
+
+    if (!newTeam.createdBy) {
+      return true
+    }
+
+    return admin
+      .auth()
+      .getUser(newTeam.createdBy)
+      .then(userInfo => {
+        return teamRef.update({
+          createdAt: new Date(),
+          employeesCount: 0,
+          companyId: userInfo.customClaims.companyId
+        })
+      })
+  })

@@ -33,7 +33,7 @@
       <div class="col s3">
         <ul id="sidenav-left" class="sidenav sidenav-fixed">
           <li>
-            <a href="dashboard.html" class="logo-container">
+            <a href="/admin" class="logo-container">
               RRHH
               <i class="material-icons left">people</i>
             </a>
@@ -42,6 +42,12 @@
             <Navigate to="/admin/">
               Dashboard
               <i class="material-icons left">dashboard</i>
+            </Navigate>
+          </li>
+          <li>
+            <Navigate to="/admin/teams">
+              Teams
+              <i class="material-icons left">group_work</i>
             </Navigate>
           </li>
           <li>

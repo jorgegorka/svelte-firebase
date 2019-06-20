@@ -3,10 +3,10 @@
   import validate from 'validate.js'
   import { Auth, Functions } from '../../../config/firebase'
 
-  import TextInput from '../../components/form/text_input.svelte'
-  import PasswordInput from '../../components/form/password_input.svelte'
-  import EmailInput from '../../components/form/email_input.svelte'
-  import FormButtons from '../../components/form/buttons.svelte'
+  import TextInput from '../../components/forms/text_input.svelte'
+  import PasswordInput from '../../components/forms/password_input.svelte'
+  import EmailInput from '../../components/forms/email_input.svelte'
+  import FormButtons from '../../components/forms/buttons.svelte'
   import { notificationMessage } from '../../../stores/notification_message.js'
 
   const signupConstraints = {
