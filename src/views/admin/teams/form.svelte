@@ -1,4 +1,5 @@
 <script>
+  import { createEventDispatcher } from 'svelte'
   import validate from 'validate.js'
   import { addTeam } from '../../../middleware/teams/crud.js'
   import Modal from '../../components/modal.svelte'
@@ -8,6 +9,7 @@
 
   export let team = { name: '' }
   export let showModal = false
+  const dispatch = createEventDispatcher()
   const teamConstraints = {
     name: {
       presence: true,
@@ -44,13 +46,15 @@
     return false
   }
 
-  const updateTeam = async () => {
+  const updateTeam = () => {
     disableAction = true
     validateLoginForm()
     if (validateLoginForm()) {
       team.createdBy = $currentUser.id
-      await addTeam(team)
-      showModal = false
+      team.companyId = $currentUser.companyId
+      addTeam(team)
+      dispatch('cancel')
+      disableAction = false
     } else {
       disableAction = false
     }

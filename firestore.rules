@@ -8,7 +8,7 @@ service cloud.firestore {
 
     match /teams/{teamId} {
       allow read: if isSignedIn() && adminOrEmployee();
-      allow create: if companyAdmin();
+      allow create: if userAndAdmin();
       allow update, delete: if companyAdmin()
     }
 

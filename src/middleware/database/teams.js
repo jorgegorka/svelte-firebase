@@ -2,10 +2,7 @@ import { FirebaseTeams } from './index'
 
 const teamsDb = () => {
   const add = teamInfo => {
-    return FirebaseTeams.add({
-      name: teamInfo.name,
-      createdBy: teamInfo.createdBy
-    })
+    return FirebaseTeams.add(teamInfo)
   }
 
   const update = (teamId, teamInfo) => {
