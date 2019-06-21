@@ -9,6 +9,10 @@ const teamsDb = () => {
     return FirebaseTeams.doc(teamId).update(teamInfo)
   }
 
+  const remove = teamId => {
+    return FirebaseTeams.doc(teamId).delete()
+  }
+
   const findOne = teamId => {
     return FirebaseTeams.doc(teamId).get()
   }
@@ -21,7 +25,8 @@ const teamsDb = () => {
     add,
     update,
     findOne,
-    findAll
+    findAll,
+    remove
   })
 }
 

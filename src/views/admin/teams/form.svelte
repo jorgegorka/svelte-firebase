@@ -1,7 +1,8 @@
 <script>
   import { createEventDispatcher } from 'svelte'
   import validate from 'validate.js'
-  import { addTeam } from '../../../middleware/teams/crud.js'
+  import { Teams } from '../../../middleware/database/teams'
+  import { notificationMessage } from '../../../stores/notification_message.js'
   import Modal from '../../components/modal.svelte'
   import TextInput from '../../components/forms/text_input.svelte'
   import FormButtons from '../../components/forms/buttons.svelte'
@@ -9,6 +10,7 @@
 
   export let team = { name: '' }
   export let showModal = false
+
   const dispatch = createEventDispatcher()
   const teamConstraints = {
     name: {
@@ -52,7 +54,21 @@
     if (validateLoginForm()) {
       team.createdBy = $currentUser.id
       team.companyId = $currentUser.companyId
-      addTeam(team)
+      if (team.id) {
+        Teams.update(team.id, team).then(
+          notificationMessage.set({
+            message: 'Team updated successfully.',
+            type: 'success-toast'
+          })
+        )
+      } else {
+        Teams.add(team).then(
+          notificationMessage.set({
+            message: 'Team created successfully.',
+            type: 'success-toast'
+          })
+        )
+      }
       dispatch('cancel')
       disableAction = false
     } else {

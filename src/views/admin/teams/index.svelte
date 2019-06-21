@@ -1,9 +1,16 @@
 <script>
-  // import Item from './item.svelte'
+  import { onDestroy } from 'svelte'
+  import { FirebaseResults } from '../../../middleware/database'
+  import { Teams } from '../../../middleware/database/teams'
+  import { filterResults } from '../../../lib/filter_results'
+  import { currentUser } from '../../../stores/current_user'
+  import Item from './item.svelte'
   import Form from './form.svelte'
   let teams = []
+  let filteredTeams = []
   let team = {}
   let showModal = false
+  let unsubscribeQuery = null
 
   const openModal = () => {
     showModal = true
@@ -11,6 +18,32 @@
   const closeModal = () => {
     showModal = false
   }
+
+  $: fetchTeams($currentUser.companyId)
+
+  const fetchTeams = companyId => {
+    if (!companyId) return
+    unsubscribeQuery = Teams.findAll(companyId).onSnapshot(docs => {
+      teams = FirebaseResults.map(docs)
+      filteredTeams = [...teams]
+    })
+  }
+  const filterTeams = searchTerm => {
+    if (searchTerm.length < 2) {
+      filteredTeams = [...teams]
+    } else {
+      filteredTeams = filterResults(searchTerm, teams, 'name').search()
+    }
+  }
+
+  const editTeam = event => {
+    team = event.detail
+    showModal = true
+  }
+
+  onDestroy(() => {
+    unsubscribeQuery()
+  })
 </script>
 
 <style>
@@ -32,8 +65,8 @@
     </div>
   </div>
   <ul class="collection">
-    {#each teams as team (team.id)}
-      <!-- <Item {team} /> -->
+    {#each filteredTeams as team (team.id)}
+      <Item on:edit-team={editTeam} {team} />
     {/each}
   </ul>
 </div>
