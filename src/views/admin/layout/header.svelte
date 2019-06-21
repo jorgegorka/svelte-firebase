@@ -16,7 +16,7 @@
 <nav>
   <div class="nav-wrapper">
     <a href="/admin" class="brand-logo">
-      Admin
+      Gestión Recursos Humanos
       <i class="material-icons left">web</i>
     </a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger">

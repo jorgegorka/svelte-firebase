@@ -31,14 +31,8 @@
 </script>
 
 <style>
-  .logo-container {
-    height: 64px;
-    line-height: 64px;
-    font-size: 2rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  }
-  .logo-container i {
-    line-height: inherit;
+  .sidenav-fixed {
+    margin-top: 64px;
   }
 </style>
 
@@ -51,10 +45,7 @@
         <div class="col s3">
           <ul id="sidenav-left" class="sidenav sidenav-fixed">
             <li>
-              <a href="/admin" class="logo-container">
-                RRHH
-                <i class="material-icons left">people</i>
-              </a>
+              <h5 class="center">Main menu</h5>
             </li>
             <li>
               <Navigate to="/admin/">
