@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte'
+  import { Navigate } from 'svelte-router-spa'
 
   onMount(() => {
     const elems = document.querySelectorAll('.sidenav')
@@ -15,8 +16,8 @@
 
 <nav>
   <div class="nav-wrapper">
-    <a href="/admin" class="brand-logo">
-      Gestión Recursos Humanos
+    <a href="/admin/" class="brand-logo">
+      Svelte & Firebase
       <i class="material-icons left">web</i>
     </a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger">
@@ -24,16 +25,31 @@
     </a>
     <ul class="right hide-on-med-and-down">
       <li>
-        <a href="/admin">
+        <Navigate to="/settings">
           <i class="material-icons left">settings</i>
           Settings
-        </a>
+        </Navigate>
       </li>
     </ul>
   </div>
 </nav>
 <ul class="sidenav" id="mobile-demo">
   <li>
-    <a href="mobile.html">Settings</a>
+    <Navigate to="/admin/">
+      Dashboard
+      <i class="material-icons left">dashboard</i>
+    </Navigate>
+  </li>
+  <li>
+    <Navigate to="/admin/teams">
+      Teams
+      <i class="material-icons left">group_work</i>
+    </Navigate>
+  </li>
+  <li>
+    <Navigate to="/admin/employees">
+      Employees
+      <i class="material-icons left">person_pin</i>
+    </Navigate>
   </li>
 </ul>

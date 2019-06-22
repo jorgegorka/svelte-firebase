@@ -1,22 +1,22 @@
 <style>
-  .hero-foot {
-    background-color: #444f60;
+  .page-footer {
+    padding-top: 0px;
   }
 </style>
 
-<div class="hero-foot">
-  <nav class="tabs">
+<footer class="page-footer teal">
+  <div class="footer-copyright">
     <div class="container">
-      <ul>
-        <li class="is-active">
-          <a href="https://www.alvareznavarro.es" title="Jorge's website">Created by Jorge Alvarez</a>
-        </li>
-        <li>
-          <a href="https://github.com/jorgegorka/svelte-firebase" title="Download Svelte & Firebase">
-            Download the template
-          </a>
-        </li>
-      </ul>
+      Made by
+      <a href="https://www.alvareznavarro.es" title="Web developer" class="brown-text text-lighten-3">Jorge Alvarez</a>
+      |
+      <a
+        href="https://github.com/jorgegorka/svelte-firebase"
+        title="Download Svelte & Firebase"
+        class="brown-text text-lighten-3">
+        Download the template
+      </a>
+      | All product names, logos, and brands are property of their respective owners
     </div>
-  </nav>
-</div>
+  </div>
+</footer>

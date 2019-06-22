@@ -1,20 +1,19 @@
-<style>
-  .help-text {
-    margin-top: 1em;
-  }
-  .section {
-    background-color: #eff4f7;
-  }
-</style>
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <div class="col s12 m6">
+        <h5>Public and Private sections</h5>
+        <h5>Fully resposive theme</h5>
+        <h5>Form validation</h5>
+        <h5>Firebase cloud functions</h5>
+      </div>
 
-<section class="section is-medium">
-  <div class="container">
-    <div class="title-wrapper has-text-centered">
-      <h2 class="title is-2">What is this?</h2>
-      <h3 class="subtitle is-5 is-muted">
-        A free template that you can use to create new applications using Svelte and Firebase.
-      </h3>
-      <div class="divider is-centered" />
+      <div class="col s12 m6">
+        <h5>Secure your database with Firebase rules</h5>
+
+        <h5>Preconfigured pages for Home, Login, Signup and more...</h5>
+        <h5>Very easy to extend to your own needs</h5>
+      </div>
     </div>
   </div>
-</section>
+</div>
