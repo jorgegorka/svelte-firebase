@@ -4,7 +4,6 @@
 
   import Header from './header.svelte'
   import Sidebar from './sidebar/index.svelte'
-  import { Auth } from '../../../config/firebase'
   import { currentUser } from '../../../stores/current_user'
   import Notification from '../../components/notification.svelte'
   import Loading from '../../components/loading.svelte'
@@ -36,12 +35,6 @@
   onDestroy(() => {
     unsubscribe()
   })
-
-  const logoutUser = () => {
-    Auth.signOut().then(() => {
-      notificationMessage.set({ message: "You've been logged out successfully.", type: 'success-toast' })
-    })
-  }
 </script>
 
 {#if !showPage}

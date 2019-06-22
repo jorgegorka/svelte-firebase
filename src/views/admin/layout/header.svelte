@@ -2,13 +2,26 @@
   import { onMount } from 'svelte'
   import { Navigate } from 'svelte-router-spa'
 
+  import { Auth } from '../../../config/firebase'
+
   onMount(() => {
-    const elems = document.querySelectorAll('.sidenav')
-    M.Sidenav.init(elems, {})
+    const sideNav = document.querySelectorAll('.sidenav')
+    M.Sidenav.init(sideNav, {})
+    const dropdownSettings = document.getElementById('dropdownSettings')
+    M.Dropdown.init(dropdownSettings, {})
   })
+
+  const logoutUser = () => {
+    Auth.signOut().then(() => {
+      notificationMessage.set({ message: "You've been logged out successfully.", type: 'success-toast' })
+    })
+  }
 </script>
 
 <style>
+  #settingsMenu {
+    top: 64px !important;
+  }
   .brand-logo {
     padding-left: 1rem;
   }
@@ -25,10 +38,19 @@
     </a>
     <ul class="right hide-on-med-and-down">
       <li>
-        <Navigate to="/settings">
+        <a href="#" class="dropdown-trigger" id="dropdownSettings" data-target="settingsMenu">
           <i class="material-icons left">settings</i>
           Settings
-        </Navigate>
+        </a>
+        <ul id="settingsMenu" class="dropdown-content">
+
+          <li>
+            <a href="#" on:click={logoutUser}>
+              Log out
+              <i class="material-icons left">exit_to_app</i>
+            </a>
+          </li>
+        </ul>
       </li>
     </ul>
   </div>
@@ -51,5 +73,11 @@
       Employees
       <i class="material-icons left">person_pin</i>
     </Navigate>
+  </li>
+  <li>
+    <a href="#" on:click={logoutUser}>
+      Log out
+      <i class="material-icons left">exit_to_app</i>
+    </a>
   </li>
 </ul>
