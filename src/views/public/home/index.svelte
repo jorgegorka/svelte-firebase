@@ -6,7 +6,7 @@
   // import Features from './features.svelte'
   import HowToUseIt from './how_to_use_it.svelte'
   import Technology from './technology.svelte'
-  import Footer from './footer.svelte'
+  import Footer from '../layout/footer.svelte'
 
   onMount(() => {
     console.log('on mount')
