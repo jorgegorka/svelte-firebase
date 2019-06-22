@@ -3,7 +3,6 @@
   import { Route } from 'svelte-router-spa'
   import Notification from '../../components/notification.svelte'
   import { notificationMessage } from '../../../stores/notification_message.js'
-  import TopHeader from './top_header.svelte'
   import Footer from './footer.svelte'
   export let currentRoute
   let visible = false

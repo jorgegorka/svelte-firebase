@@ -40,6 +40,8 @@ const config = {
 
 Update .firebaserc with your project ID
 
+### Deployment
+
 Launch the development server
 
 ```bash
@@ -50,7 +52,7 @@ Visit http://localhost:5000
 
 ### Deployment
 
-To deploy your app to Firebase. Rembember to activate cloud firestore, storage and hosting in the Firebase console.
+Rembember to activate cloud firestore, storage and hosting in the Firebase console.
 
 ```bash
 yarn deploy

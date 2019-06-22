@@ -29,7 +29,8 @@
           href="https://github.com/jorgegorka/svelte-firebase"
           id="download-button"
           class="btn-large waves-effect waves-light light-green lighten-1"
-          title="Download template">
+          title="Download the template">
+          <i class="material-icons left">cloud_download</i>
           Download
         </a>
       </div>

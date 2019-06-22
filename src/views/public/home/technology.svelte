@@ -10,7 +10,7 @@
     <div class="row">
       <div class="col s12 m6">
         <div class="icon-block">
-          <div class="">
+          <div class="center">
             <a href="https://svelte.dev/" title="Svelte Cibernetically enhanced web apps">
               <img src="/images/svelte-logo.svg" class="logo-image" alt="Svelte" />
             </a>

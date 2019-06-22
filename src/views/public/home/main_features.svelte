@@ -10,9 +10,10 @@
       </div>
 
       <div class="col s12 m6">
-        <h5>Secure your database with Firebase rules</h5>
         <h5>Preconfigured pages for Home, Login, Signup and more...</h5>
         <h5>Extend easily to match your own needs</h5>
+        <h5>Secure database rules included</h5>
+        <h5>Open source and free</h5>
       </div>
     </div>
   </div>
