@@ -52,11 +52,11 @@
     <Header />
     <main>
       <div class="row">
-        <div class="col s3">
+        <div class="col s3 hide-on-med-and-down">
           <Sidebar currentUser={$currentUser} />
         </div>
 
-        <div class="col s9">
+        <div class="col s12 l9">
           <Route {currentRoute} />
         </div>
       </div>
