@@ -1,4 +1,5 @@
 <div class="container">
+  <h2 class="center light-green-text">Features</h2>
   <div class="section">
     <div class="row">
       <div class="col s12 m6">
@@ -10,9 +11,8 @@
 
       <div class="col s12 m6">
         <h5>Secure your database with Firebase rules</h5>
-
         <h5>Preconfigured pages for Home, Login, Signup and more...</h5>
-        <h5>Very easy to extend to your own needs</h5>
+        <h5>Extend easily to match your own needs</h5>
       </div>
     </div>
   </div>

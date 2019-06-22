@@ -38,12 +38,12 @@
     <div class="section no-pad-bot all-width">
       <div class="container ">
         <div class="row center">
-          <h5 class="header col s12 light">Amazing technologies already included</h5>
+          <h2 class="col s12 light pink-text">Amazing technologies ready to use</h2>
         </div>
       </div>
     </div>
     <div class="parallax">
-      <img src="/images/hamburg_bridge.jpg" alt="Svelte & Firebase web development template" />
+      <img src="/images/almond.jpg" alt="Svelte & Firebase web development template" />
     </div>
   </div>
   <Technology />
@@ -52,12 +52,12 @@
     <div class="section no-pad-bot all-width">
       <div class="container">
         <div class="row center">
-          <h5 class="header col s12 light">How to use it</h5>
+          <h2 class="header col s12 light pink-text">How to use it</h2>
         </div>
       </div>
     </div>
     <div class="parallax">
-      <img src="/images/hamburg_bridge.jpg" alt="Svelte & Firebase is licensed under MIT" />
+      <img src="/images/waterfall.jpg" alt="Svelte & Firebase is licensed under MIT" />
     </div>
   </div>
   <HowToUseIt />

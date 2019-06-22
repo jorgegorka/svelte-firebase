@@ -1,13 +1,12 @@
 <style>
-  .navbar-item,
-  .brand-logo {
+  .navbar-item {
     color: #444;
   }
 </style>
 
 <nav class="white" role="navigation">
   <div class="nav-wrapper container">
-    <a id="logo-container" href="/" class="brand-logo">Svelte & Firebase</a>
+    <a id="logo-container" href="/" class="brand-logo light-green-text">Svelte & Firebase</a>
     <ul class="right hide-on-med-and-down">
       <li>
         <a href="/" class="navbar-item active">Home</a>

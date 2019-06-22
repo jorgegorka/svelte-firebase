@@ -18,18 +18,19 @@
     <div class="container">
       <br />
       <br />
-      <h1 class="header center teal-text text-lighten-2">Svelte & Firebase</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">
+      <h1 class="header light-green-text">Svelte & Firebase</h1>
+      <div class="row">
+        <h5 class="header col s12 light white-text">
           A free template that you can use to create new applications using Svelte and Firebase
         </h5>
       </div>
       <div class="row center">
         <a
-          href="http://materializecss.com/getting-started.html"
+          href="https://github.com/jorgegorka/svelte-firebase"
           id="download-button"
-          class="btn-large waves-effect waves-light teal lighten-1">
-          Get Started
+          class="btn-large waves-effect waves-light light-green lighten-1"
+          title="Download template">
+          Download
         </a>
       </div>
       <br />
@@ -38,6 +39,6 @@
     </div>
   </div>
   <div class="parallax">
-    <img src="/images/hamburg_bridge.jpg" alt="A template to learn svelte and firebase" />
+    <img src="/images/ebro_river.jpg" alt="A template to learn svelte and firebase" />
   </div>
 </div>
