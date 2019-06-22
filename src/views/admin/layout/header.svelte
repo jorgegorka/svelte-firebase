@@ -14,7 +14,7 @@
   }
 </style>
 
-<nav>
+<nav class="teal lighten-1">
   <div class="nav-wrapper">
     <a href="/admin/" class="brand-logo">
       Svelte & Firebase

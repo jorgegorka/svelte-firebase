@@ -23,14 +23,23 @@
   }
 
   let formTitle = 'New team'
+  let submitText = 'Create'
   let nameError = false
   let nameMessage = ''
   let disableAction = false
   let modalWindow = null
 
+  $: if (team.id) {
+    formTitle = 'Edit team'
+    submitText = 'Save'
+  } else {
+    formTitle = 'New team'
+    submitText = 'Create'
+  }
+
   const resetErrorInfo = () => {
-    let nameError = false
-    let nameMessage = ''
+    nameError = false
+    nameMessage = ''
   }
 
   const validateLoginForm = () => {
@@ -87,6 +96,6 @@
       icon="group_work"
       isFocused={true}
       errorMessage={nameMessage} />
-    <FormButtons cancelText="Cancel" on:cancel submitText="Create team" isLoading={disableAction} />
+    <FormButtons cancelText="Cancel" on:cancel {submitText} isLoading={disableAction} />
   </form>
 </Modal>

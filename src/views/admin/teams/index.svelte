@@ -4,7 +4,7 @@
   import { Teams } from '../../../middleware/database/teams'
   import { filterResults } from '../../../lib/filter_results'
   import { currentUser } from '../../../stores/current_user'
-  import Item from './item.svelte'
+  import ListTeams from './list.svelte'
   import Form from './form.svelte'
   let teams = []
   let filteredTeams = []
@@ -12,7 +12,8 @@
   let showModal = false
   let unsubscribeQuery = null
 
-  const openModal = () => {
+  const addTeam = () => {
+    team = { name: '' }
     showModal = true
   }
   const closeModal = () => {
@@ -58,16 +59,12 @@
       <h4>Teams</h4>
     </div>
     <div class="col s3">
-      <a href="#" class="btn light-blue darken-1 secondary-content new-team" on:click={openModal}>
+      <a href="#" class="btn light-blue darken-1 secondary-content new-team" on:click={addTeam}>
         New team
         <i class="material-icons left">add</i>
       </a>
     </div>
   </div>
-  <ul class="collection">
-    {#each filteredTeams as team (team.id)}
-      <Item on:edit-team={editTeam} {team} />
-    {/each}
-  </ul>
+  <ListTeams on:editTeam={editTeam} {filteredTeams} />
 </div>
 <Form {team} {showModal} on:cancel={closeModal} />

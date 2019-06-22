@@ -41,16 +41,9 @@ exports.createEmployee = functions.region('europe-west1').https.onCall(async (da
     throw new functions.https.HttpsError('unauthenticated')
   }
 
-  const userId = context.auth.uid
-  const { employeeData } = data
+  const employeeData = data
 
   if (!employeeData || !employeeData.email || !employeeData.name || !employeeData.password) {
-    throw new functions.https.HttpsError('not-found')
-  }
-
-  const userInfo = await admin.auth().getUser(userId)
-
-  if (!userInfo) {
     throw new functions.https.HttpsError('not-found')
   }
 
@@ -65,7 +58,7 @@ exports.createEmployee = functions.region('europe-west1').https.onCall(async (da
   }
 
   admin.auth().setCustomUserClaims(newUser.uid, {
-    companyId: userInfo.customClaims.companyId,
+    companyId: context.auth.token.companyId,
     role: 'user'
   })
 
@@ -74,9 +67,14 @@ exports.createEmployee = functions.region('europe-west1').https.onCall(async (da
     email: employeeData.email,
     name: employeeData.name,
     status: 'active',
-    companyId: userInfo.customClaims.companyId,
+    companyId: context.auth.token.companyId,
     createdAt: new Date(),
-    createdBy: userInfo.uid
+    createdBy: context.auth.uid
+  }
+
+  if (employeeData.teamId) {
+    newEmployeeInfo.teamId = employeeData.teamId
+    newEmployeeInfo.teamName = employeeData.teamName
   }
 
   return Employees.doc(newUser.uid)

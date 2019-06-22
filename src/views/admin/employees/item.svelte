@@ -1,30 +1,51 @@
 <script>
-  import { Navigate } from 'svelte-router-spa'
+  import { createEventDispatcher } from 'svelte'
+  import { notificationMessage } from '../../../stores/notification_message.js'
+  import { Employees } from '../../../middleware/database/employees'
+
   export let employee = {}
+  const dispatch = createEventDispatcher()
+
+  const deleteEmployee = () => {
+    Employees.remove(employee.id)
+      .then(
+        notificationMessage.set({
+          message: 'Employee deleted successfully.',
+          type: 'success-toast'
+        })
+      )
+      .catch(error => {
+        notificationMessage.set({
+          message: error.message,
+          type: 'error-toast'
+        })
+      })
+  }
+
+  const editEmployee = () => {
+    dispatch('editEmployee', employee)
+  }
 </script>
+
+<style>
+  .edit-icon {
+    margin-right: 1rem;
+  }
+</style>
 
 <tr>
   <td>
-    <Navigate to="/admin/employees/{employee.id}">
-      <strong>{employee.name}</strong>
-    </Navigate>
+    <a href={`/admin/employees/show/${employee.id}`}>{employee.name}</a>
   </td>
-  <td class="right-element"> {employee.email} </td>
-  <td class="right-element"> {employee.teamName} </td>
+  <td>{employee.email} </td>
+  <td>{employee.teamName} </td>
+  <td>{employee.status} </td>
   <td>
-    <div class="buttons">
-      <!-- <a class="button is-small" @click.prevent="editEmployee" href="#">
-          <span class="icon">
-            <i class="fa fa-edit"></i>
-          </span>
-          <span>{{ $t('edit') }}</span>
-        </a>
-        <a class="button is-small">
-          <span class="icon">
-            <i class="fa fa-trash"></i>
-          </span>
-          <span>{{ $t('delete') }}</span>
-        </a> -->
-    </div>
+    <a href="#" on:click={deleteEmployee} class="secondary-content" title="Delete {employee.name}">
+      <i class="material-icons">delete</i>
+    </a>
+    <a href="#" on:click={editEmployee} class="secondary-content edit-icon" title="Edit {employee.name}">
+      <i class="material-icons">edit</i>
+    </a>
   </td>
 </tr>

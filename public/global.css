@@ -7,3 +7,7 @@
 .danger-toast {
   background-color: #c62828;
 }
+
+.sidenav li a.active {
+  background-color: rgba(0, 0, 0, 0.05);
+}

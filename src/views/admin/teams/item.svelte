@@ -18,7 +18,7 @@
   }
 
   const editTeam = () => {
-    dispatch('edit-team', team)
+    dispatch('editTeam', team)
   }
 </script>
 
@@ -28,10 +28,12 @@
   }
 </style>
 
-<li class="collection-item">
-  <div>
+<tr>
+  <td>
     <a href={`/admin/teams/show/${team.id}`}>{team.name}</a>
-    - Employees: {team.employeesCount}
+  </td>
+  <td class="left"> {team.employeesCount} </td>
+  <td>
     {#if team.employeesCount === 0}
       <a href="#" on:click={deleteTeam} class="secondary-content" title="Delete {team.name}">
         <i class="material-icons">delete</i>
@@ -40,5 +42,5 @@
     <a href="#" on:click={editTeam} class="secondary-content edit-icon" title="Edit {team.name}">
       <i class="material-icons">edit</i>
     </a>
-  </div>
-</li>
+  </td>
+</tr>

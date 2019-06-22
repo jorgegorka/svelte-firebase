@@ -1,8 +1,9 @@
 <script>
   import { onDestroy } from 'svelte'
-  import { Route, navigateTo, Navigate } from 'svelte-router-spa'
+  import { Route, navigateTo } from 'svelte-router-spa'
 
   import Header from './header.svelte'
+  import Sidebar from './sidebar/index.svelte'
   import { Auth } from '../../../config/firebase'
   import { currentUser } from '../../../stores/current_user'
   import Notification from '../../components/notification.svelte'
@@ -43,12 +44,6 @@
   }
 </script>
 
-<style>
-  .sidenav-fixed {
-    margin-top: 64px;
-  }
-</style>
-
 {#if !showPage}
   <Loading />
 {:else}
@@ -58,29 +53,7 @@
     <main>
       <div class="row">
         <div class="col s3">
-          <ul id="sidenav-left" class="sidenav sidenav-fixed">
-            <li>
-              <h5 class="center">Main menu</h5>
-            </li>
-            <li>
-              <Navigate to="/admin/">
-                Dashboard
-                <i class="material-icons left">dashboard</i>
-              </Navigate>
-            </li>
-            <li>
-              <Navigate to="/admin/teams">
-                Teams
-                <i class="material-icons left">group_work</i>
-              </Navigate>
-            </li>
-            <li>
-              <Navigate to="/admin/employees">
-                Employees
-                <i class="material-icons left">person_pin</i>
-              </Navigate>
-            </li>
-          </ul>
+          <Sidebar currentUser={$currentUser} />
         </div>
 
         <div class="col s9">

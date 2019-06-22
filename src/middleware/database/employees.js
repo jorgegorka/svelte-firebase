@@ -1,15 +1,9 @@
 import { FirebaseEmployees } from './index'
 
 const employeesDb = () => {
-  const add = employeeInfo => {
-    return FirebaseEmployees.add({
-      name: employeeInfo.name,
-      email: employeeInfo.email,
-      teamId: employeeInfo.teamId,
-      teamName: employeeInfo.teamName,
-      status: 'active',
-      createdBy: employeeInfo.createdBy
-    })
+  const add = _employeeInfo => {
+    return false
+    // return FirebaseEmployees.add(employeeInfo)
   }
 
   const update = (employeeId, employeeInfo) => {
