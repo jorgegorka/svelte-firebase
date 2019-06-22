@@ -4,6 +4,7 @@
   import { Employees } from '../../../middleware/database/employees'
 
   export let employee = {}
+  let teamName = ''
   const dispatch = createEventDispatcher()
 
   const deleteEmployee = () => {
@@ -25,6 +26,12 @@
   const editEmployee = () => {
     dispatch('editEmployee', employee)
   }
+
+  $: if (!employee.teamName) {
+    teamName = '- Not assigned -'
+  } else {
+    teamName = employee.teamName
+  }
 </script>
 
 <style>
@@ -38,7 +45,7 @@
     <a href={`/admin/employees/show/${employee.id}`}>{employee.name}</a>
   </td>
   <td>{employee.email} </td>
-  <td>{employee.teamName} </td>
+  <td>{teamName} </td>
   <td>{employee.status} </td>
   <td>
     <a href="#" on:click={deleteEmployee} class="secondary-content" title="Delete {employee.name}">

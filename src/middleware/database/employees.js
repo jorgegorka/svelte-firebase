@@ -7,6 +7,8 @@ const employeesDb = () => {
   }
 
   const update = (employeeId, employeeInfo) => {
+    delete employeeInfo.email
+    delete employeeInfo.password
     return FirebaseEmployees.doc(employeeId).update(employeeInfo)
   }
 
@@ -22,12 +24,17 @@ const employeesDb = () => {
     return FirebaseEmployees.where('companyId', '==', companyId).orderBy('name')
   }
 
+  const remove = employeeId => {
+    return FirebaseEmployees.doc(employeeId).delete()
+  }
+
   return Object.freeze({
     add,
     update,
     findOne,
     findAll,
-    findByUserId
+    findByUserId,
+    remove
   })
 }
 

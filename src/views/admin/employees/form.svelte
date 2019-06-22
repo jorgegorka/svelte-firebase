@@ -2,13 +2,16 @@
   import { createEventDispatcher } from 'svelte'
   import validate from 'validate.js'
   import { Auth, Functions } from '../../../config/firebase'
+  import { FirebaseResults } from '../../../middleware/database'
   import { Employees } from '../../../middleware/database/employees'
+  import { Teams } from '../../../middleware/database/teams'
   import { notificationMessage } from '../../../stores/notification_message.js'
   import Modal from '../../components/modal.svelte'
   import TextInput from '../../components/forms/text_input.svelte'
   import EmailInput from '../../components/forms/email_input.svelte'
   import PasswordInput from '../../components/forms/password_input.svelte'
   import FormButtons from '../../components/forms/buttons.svelte'
+  import Select from '../../components/forms/select.svelte'
   import { currentUser } from '../../../stores/current_user'
 
   export let employee = { name: '', email: '', password: '', teamId: '' }
@@ -24,18 +27,18 @@
       }
     },
     email: {
-      presence: true,
+      presence: !!employee.id,
       email: true
     },
     password: {
-      presence: true,
+      presence: !!employee.id,
       length: {
         minimum: 4,
         message: 'must be at least 4 characters'
       }
     }
   }
-
+  let teams = []
   let formTitle = 'New employee'
   let submitText = 'Create'
   let nameError = false
@@ -55,6 +58,23 @@
     submitText = 'Create'
   }
 
+  $: fetchTeams($currentUser.companyId)
+
+  const fetchTeams = companyId => {
+    if (!companyId) return
+    Teams.findAll(companyId)
+      .get()
+      .then(querySnapshot => {
+        const results = FirebaseResults.map(querySnapshot)
+        teams = results.map(team => ({ id: team.id, name: team.name }))
+      })
+  }
+
+  const updateTeamInfo = () => {
+    const team = teams.find(team => team.id === employee.teamId)
+    employee.teamName = team.name
+  }
+
   const resetErrorInfo = () => {
     nameError = false
     nameMessage = ''
@@ -70,6 +90,7 @@
       { name: employee.name, email: employee.email, password: employee.password },
       employeeConstraints
     )
+
     if (!validationResult) {
       return true
     } else {
@@ -80,6 +101,10 @@
       if (validationResult.email && validationResult.email.length > 0) {
         emailMessage = validationResult.email[0]
         emailError = true
+      }
+      if (validationResult.password && validationResult.password.length > 0) {
+        passwordMessage = validationResult.password[0]
+        passwordError = true
       }
     }
 
@@ -92,6 +117,9 @@
     if (validateLoginForm()) {
       employee.createdBy = $currentUser.id
       employee.companyId = $currentUser.companyId
+      if (employee.teamId) {
+        updateTeamInfo()
+      }
       if (employee.id) {
         Employees.update(employee.id, employee).then(
           notificationMessage.set({
@@ -109,7 +137,6 @@
             })
           )
           .catch(error => {
-            console.log(error)
             notificationMessage.set({
               message: error.message,
               type: 'error-toast'
@@ -134,19 +161,21 @@
       icon="person"
       isFocused={true}
       errorMessage={nameMessage} />
-    <EmailInput
-      bind:value={employee.email}
-      error={emailError}
-      label="Employee e-mail"
-      icon="email"
-      errorMessage={emailMessage} />
-
-    <PasswordInput
-      bind:value={employee.password}
-      error={passwordError}
-      label="Password"
-      icon="lock"
-      errorMessage={passwordMessage} />
+    {#if !employee.id}
+      <EmailInput
+        bind:value={employee.email}
+        error={emailError}
+        label="Employee e-mail"
+        icon="email"
+        errorMessage={emailMessage} />
+      <PasswordInput
+        bind:value={employee.password}
+        error={passwordError}
+        label="Password"
+        icon="lock"
+        errorMessage={passwordMessage} />
+    {/if}
+    <Select options={teams} bind:value={employee.teamId} />
     <FormButtons cancelText="Cancel" on:cancel {submitText} isLoading={disableAction} />
   </form>
 </Modal>
