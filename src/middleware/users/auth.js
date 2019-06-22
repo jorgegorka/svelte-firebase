@@ -24,6 +24,6 @@ Auth.onAuthStateChanged(() => {
       })
     })
   } else {
-    currentUser.remove({})
+    currentUser.set({ id: 0 })
   }
 })
