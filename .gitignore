@@ -25,5 +25,4 @@ yarn-error.log*
 *.sln
 *.sw*
 
-src/config
 .firebase/*
