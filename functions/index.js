@@ -106,3 +106,50 @@ exports.teamCreate = functions
         })
       })
   })
+
+exports.updateTeamsCount = functions
+  .region('europe-west1')
+  .firestore.document('employees/{employeeID}')
+  .onWrite(async (change, _context) => {
+    let changes = []
+
+    // Update employee
+    if (change.before.exists && change.after.exists) {
+      const updatedEmployee = change.after.data()
+      const oldEmployee = change.before.data()
+      if (updatedEmployee !== oldEmployee) {
+        if (oldEmployee.teamId) {
+          changes.push({ action: admin.firestore.FieldValue.increment(-1), teamId: oldEmployee.teamId })
+        }
+
+        if (updatedEmployee.teamId) {
+          changes.push({ action: admin.firestore.FieldValue.increment(1), teamId: updatedEmployee.teamId })
+        }
+      }
+    }
+
+    // New employee
+    if (!change.before.exists) {
+      const employee = change.after.data()
+      changes.push({ action: admin.firestore.FieldValue.increment(1), teamId: employee.teamId })
+    }
+
+    // Removed employee
+    if (!change.after.exists) {
+      const employee = change.before.data()
+      changes.push({ action: admin.firestore.FieldValue.increment(-1), teamId: employee.teamId })
+    }
+
+    // Updated team for employee
+    if (changes.length === 0) {
+      console.log('no changes')
+      return 'no changes'
+    }
+    const Teams = firestore.collection('teams')
+
+    changes.forEach(change => {
+      Teams.doc(change.teamId).update({ employeesCount: change.action })
+    })
+
+    return 'ok'
+  })
