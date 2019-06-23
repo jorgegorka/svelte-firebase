@@ -42,7 +42,7 @@ const config = {
 
 **Update .firebaserc with your project ID**
 
-### Deployment
+### Development
 
 Launch the development server
 
@@ -50,7 +50,13 @@ Launch the development server
 yarn dev
 ```
 
-Visit http://localhost:5000
+Visit [http://localhost:5000](http://localhost:5000)
+
+To add new pages edit the routes files at _src/lib/routes_
+
+There are public and protected routes. Protected routes require the visitor to be authenticated before accesing them.
+
+There are two complete CRUD examples: Teams and Employees.
 
 ### Deployment
 
