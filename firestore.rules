@@ -15,11 +15,10 @@ service cloud.firestore {
     match /employees/{employeeId} {
       allow read: if isSignedIn() && adminOrEmployee();
       allow create: if companyAdmin();
-      allow update, delete: if companyAdmin()
+      allow update: if companyAdmin()
+      allow delete: if companyAdmin() && notCreator()
     }
   }
-
-
 
   function isSignedIn() {
     return (request.auth.uid != null)
@@ -47,5 +46,9 @@ service cloud.firestore {
 
   function adminOrOwner() {
     return userBelongsToCompany() && (userIsAdmin() || resource.data.employeeId == request.auth.uid)
+  }
+
+  function notCreator() {
+    return resource.data.status != 'creator'
   }
 }

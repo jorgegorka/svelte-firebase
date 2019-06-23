@@ -1,30 +1,16 @@
 <script>
   import { createEventDispatcher } from 'svelte'
-  import { notificationMessage } from '../../../stores/notification_message.js'
-  import { Employees } from '../../../middleware/database/employees'
 
   export let employee = {}
   let teamName = ''
   const dispatch = createEventDispatcher()
 
-  const deleteEmployee = () => {
-    Employees.remove(employee.id)
-      .then(
-        notificationMessage.set({
-          message: 'Employee deleted successfully.',
-          type: 'success-toast'
-        })
-      )
-      .catch(error => {
-        notificationMessage.set({
-          message: error.message,
-          type: 'error-toast'
-        })
-      })
-  }
-
   const editEmployee = () => {
     dispatch('editEmployee', employee)
+  }
+
+  const removeEmployee = () => {
+    dispatch('removeEmployee', employee.id)
   }
 
   $: if (!employee.teamName) {
@@ -48,7 +34,7 @@
   <td>{teamName} </td>
   <td>{employee.status} </td>
   <td>
-    <a href="#" on:click={deleteEmployee} class="secondary-content" title="Delete {employee.name}">
+    <a href="#" on:click={removeEmployee} class="secondary-content" title="Delete {employee.name}">
       <i class="material-icons">delete</i>
     </a>
     <a href="#" on:click={editEmployee} class="secondary-content edit-icon" title="Edit {employee.name}">

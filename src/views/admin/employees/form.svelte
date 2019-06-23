@@ -6,7 +6,7 @@
   import { Employees } from '../../../middleware/database/employees'
   import { Teams } from '../../../middleware/database/teams'
   import { notificationMessage } from '../../../stores/notification_message.js'
-  import Modal from '../../components/modal.svelte'
+  import Modal from '../../components/modals/modal.svelte'
   import TextInput from '../../components/forms/text_input.svelte'
   import EmailInput from '../../components/forms/email_input.svelte'
   import PasswordInput from '../../components/forms/password_input.svelte'

@@ -23,7 +23,7 @@ exports.createCompany = functions.region('europe-west1').https.onCall(async (dat
   return Companies.add({ name: companyName.toString(), createdBy: userId, createdAt: new Date() }).then(doc => {
     Employees.doc(userId).set({
       name: companyName.toString(),
-      status: 'active',
+      status: 'creator',
       companyId: doc.id,
       createdAt: new Date(),
       createdBy: userId
@@ -66,7 +66,7 @@ exports.createEmployee = functions.region('europe-west1').https.onCall(async (da
     id: newUser.uid,
     email: employeeData.email,
     name: employeeData.name,
-    status: 'active',
+    status: 'user',
     companyId: context.auth.token.companyId,
     createdAt: new Date(),
     createdBy: context.auth.uid

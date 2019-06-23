@@ -3,7 +3,7 @@
   import validate from 'validate.js'
   import { Teams } from '../../../middleware/database/teams'
   import { notificationMessage } from '../../../stores/notification_message.js'
-  import Modal from '../../components/modal.svelte'
+  import Modal from '../../components/modals/modal.svelte'
   import TextInput from '../../components/forms/text_input.svelte'
   import FormButtons from '../../components/forms/buttons.svelte'
   import { currentUser } from '../../../stores/current_user'
