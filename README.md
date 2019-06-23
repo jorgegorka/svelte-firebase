@@ -22,7 +22,9 @@ cd my-app-name && yarn install
 ```
 
 Add your Firebase configuration info to
-_src/config/firebase.js_ (If you don't have a Firebase project you can create one in the
+_src/config/settings.js_
+
+If you don't have a Firebase project you can create one in the
 [Firebase website](https://firebase.google.com/)
 
 Activate cloud firestore, storage and hosting in the Firebase console
@@ -38,7 +40,7 @@ const config = {
 }
 ```
 
-Update .firebaserc with your project ID
+**Update .firebaserc with your project ID**
 
 ### Deployment
 
@@ -52,13 +54,17 @@ Visit http://localhost:5000
 
 ### Deployment
 
-Rembember to activate cloud firestore, storage and hosting in the Firebase console.
+Rembember to activate cloud firestore, storage and hosting in the Firebase console before deploying for the first time.
 
 ```bash
 yarn deploy
 ```
 
 Enjoy
+
+## Contribute
+
+Your comments, suggestions and improvements are [very welcome](https://github.com/jorgegorka/svelte-firebase/issues).
 
 ## Credits
 
