@@ -2,6 +2,8 @@
 
 A free template that you can use to create new applications using Svelte and Firebase.
 
+You can see a live demo here: [https://svelte-firebase-template.web.app/](https://svelte-firebase-template.web.app/)
+
 ## Features
 
 - Powerfull routing system with nested layouts.
