@@ -67,12 +67,18 @@
       .then(querySnapshot => {
         const results = FirebaseResults.map(querySnapshot)
         teams = results.map(team => ({ id: team.id, name: team.name }))
+        teams.unshift({ id: '000', name: 'Please select a team' })
       })
   }
 
   const updateTeamInfo = () => {
-    const team = teams.find(team => team.id === employee.teamId)
-    employee.teamName = team.name
+    if (employee.teamId === '000') {
+      delete employee.teamId
+      delete employee.teamName
+    } else {
+      const team = teams.find(team => team.id === employee.teamId)
+      employee.teamName = team.name
+    }
   }
 
   const resetErrorInfo = () => {

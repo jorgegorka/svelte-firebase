@@ -13,7 +13,7 @@
   let unsubscribeQuery = null
 
   const addEmployee = () => {
-    employee = { name: '', email: '', password: '', teamId: '' }
+    employee = { name: '', email: '', password: '', teamId: '000' }
     showModal = true
   }
   const closeModal = () => {

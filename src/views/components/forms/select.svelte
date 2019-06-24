@@ -18,7 +18,7 @@
 
 <div class="input-field">
   <select bind:value class="validate" {id} class:invalid={error}>
-    {#each options as option (option.id)}
+    {#each options as option (option.name)}
       <option value={option.id}>{option.name}</option>
     {/each}
   </select>
