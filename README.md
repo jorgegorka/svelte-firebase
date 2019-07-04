@@ -44,6 +44,22 @@ const config = {
 
 **Update .firebaserc with your project ID**
 
+Install all the dependencies required by functions.
+
+```bash
+cd functions
+npm i
+```
+
+Now we want to deploy all the rules, indexes and cloud functions to Firebase.
+
+
+```bash
+yarn deploy
+```
+
+This first first deployment will setup Firebase so everything is ready for development.
+
 ### Development
 
 Launch the development server
