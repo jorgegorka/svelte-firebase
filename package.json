@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "firebase": "^6.1.1",
-    "materialize-css": "^1.0.0-rc.2",
+    "materialize-css": "^1.0.0",
     "svelte-router-spa": "^2.0.2",
     "validate.js": "^0.13.0"
   }
