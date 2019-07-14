@@ -6,9 +6,14 @@
   export let label = 'Select'
   export let value = ''
   export let error = false
-  export let errorMessage = 'Please select an option.'
+  export let errorMessage = 'Please select an option'
   export let helpText = ''
   export let options = []
+  export let defaultOption = {}
+
+  $: if (defaultOption.id) {
+    options.unshift(defaultOption)
+  }
 
   afterUpdate(() => {
     const elems = document.getElementById(id)
@@ -18,7 +23,7 @@
 
 <div class="input-field">
   <select bind:value class="validate" {id} class:invalid={error}>
-    {#each options as option (option.name)}
+    {#each options as option (option.id)}
       <option value={option.id}>{option.name}</option>
     {/each}
   </select>

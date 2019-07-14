@@ -5,18 +5,30 @@
   let teamName = ''
   const dispatch = createEventDispatcher()
 
-  const editEmployee = () => {
-    dispatch('editEmployee', employee)
-  }
-
   const removeEmployee = () => {
-    dispatch('removeEmployee', employee.id)
+    dispatch('removeEmployee', employee)
   }
 
   $: if (!employee.teamName) {
-    teamName = '- Not assigned -'
+    teamName = '- No team assigned -'
   } else {
     teamName = employee.teamName
+  }
+
+  const statusIcon = () => {
+    if (!employee.active) {
+      return 'unarchive'
+    } else {
+      return 'archive'
+    }
+  }
+
+  const statusTitle = () => {
+    if (!employee.active) {
+      return `Activar a ${employee.name}`
+    } else {
+      return `Archivar a ${employee.name}`
+    }
   }
 </script>
 
@@ -30,14 +42,14 @@
   <td>
     <a href={`/admin/employees/show/${employee.id}`}>{employee.name}</a>
   </td>
-  <td>{employee.email} </td>
-  <td>{teamName} </td>
-  <td>{employee.status} </td>
+  <td>{employee.email}</td>
+  <td>{teamName}</td>
+  <td>{employee.role}</td>
   <td>
-    <a href="#" on:click={removeEmployee} class="secondary-content" title="Delete {employee.name}">
-      <i class="material-icons">delete</i>
+    <a href="#" on:click={removeEmployee} class="secondary-content" title={statusTitle()}>
+      <i class="material-icons">{statusIcon()}</i>
     </a>
-    <a href="#" on:click={editEmployee} class="secondary-content edit-icon" title="Edit {employee.name}">
+    <a href={`/admin/employees/edit/${employee.id}`} class="secondary-content edit-icon" title="Edit {employee.name}">
       <i class="material-icons">edit</i>
     </a>
   </td>

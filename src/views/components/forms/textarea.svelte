@@ -1,28 +1,27 @@
 <script>
-  export let inputName = 'password'
-  export let id = 'password'
-  export let label = 'Contraseña'
+  export let inputName = 'textarea'
+  export let id = 'textarea'
+  export let label = ''
   export let value = ''
-  export let icon = 'lock'
+  export let icon = null
   export let error = false
   export let isFocused = false
-  export let errorMessage = 'Por favor, añade una contraseña'
-  export let helpText = ''
+  export let errorMessage = 'Añade una descripción.'
 </script>
 
 <div class="input-field">
   {#if icon}
     <i class="material-icons prefix">{icon}</i>
   {/if}
-  <input
+  <textarea
     bind:value
     on:input={() => (error = false)}
-    type="password"
     name={inputName}
     {id}
+    class="materialize-textarea"
     class:invalid={error}
     autofocus={isFocused}
     on:blur />
   <label for={id}>{label}</label>
-  <span class="helper-text" data-error={errorMessage}>{helpText}</span>
+  <span class="helper-text" data-error={errorMessage} data-success="right" />
 </div>

@@ -7,10 +7,10 @@
 
   export let filteredEmployees = []
   let showModal = false
-  let employeeId = ''
+  let employee = ''
 
   const warnUser = event => {
-    employeeId = event.detail
+    employee = event.detail
     showModal = true
   }
 
@@ -18,13 +18,21 @@
     showModal = false
   }
 
-  const deleteEmployee = () => {
+  const confirmTitle = () => {
+    if (employee && employee.active) {
+      return 'Archive'
+    } else {
+      return 'Activate'
+    }
+  }
+
+  const archiveEmployee = () => {
     showModal = false
-    if (employeeId) {
-      Employees.remove(employeeId)
+    if (employee.id) {
+      Employees.toggleStatus(employee)
         .then(
           notificationMessage.set({
-            message: 'Employee deleted successfully.',
+            message: 'Employee status updated successfully',
             type: 'success-toast'
           })
         )
@@ -54,7 +62,17 @@
     {/each}
   </tbody>
 </table>
-<Modal modalId="deleteEmployee" {showModal}>
-  <h5>Delete this employee?</h5>
-  <ModalButtons cancelText="Cancel" submitText="Delete" on:cancel={cancelAction} on:confirmAction={deleteEmployee} />
+<Modal modalId="archiveEmployee" {showModal}>
+  {#if employee && employee.active}
+    <h5>Archive employee?</h5>
+    <p>Archived employees can not access the application but their data is kept.</p>
+  {:else}
+    <h5>Activate employee?</h5>
+    <p>Active employees can access the application.</p>
+  {/if}
+  <ModalButtons
+    cancelText="Cancel"
+    submitText={confirmTitle()}
+    on:cancel={cancelAction}
+    on:confirmAction={archiveEmployee} />
 </Modal>

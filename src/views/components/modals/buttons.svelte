@@ -28,6 +28,9 @@
   .cancel {
     margin-right: 1em;
   }
+  .cancel:hover {
+    background-color: #bdbdbd;
+  }
 </style>
 
 <div class="field form-buttons">
@@ -49,6 +52,6 @@
       </div>
     </div>
   {:else}
-    <button type="button" on:click={submitAction} class="btn btn-flat">{submitText} </button>
+    <button type="button" on:click={submitAction} class="btn btn-flat">{submitText}</button>
   {/if}
 </div>

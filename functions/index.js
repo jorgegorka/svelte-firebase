@@ -23,10 +23,11 @@ exports.createCompany = functions.region('europe-west1').https.onCall(async (dat
   return Companies.add({ name: companyName.toString(), createdBy: userId, createdAt: new Date() }).then(doc => {
     Employees.doc(userId).set({
       name: companyName.toString(),
-      status: 'creator',
+      role: 'creator',
       companyId: doc.id,
       createdAt: new Date(),
-      createdBy: userId
+      createdBy: userId,
+      active: true
     })
     admin.auth().setCustomUserClaims(userId, { companyId: doc.id, role: 'admin' })
 
@@ -66,7 +67,8 @@ exports.createEmployee = functions.region('europe-west1').https.onCall(async (da
     id: newUser.uid,
     email: employeeData.email,
     name: employeeData.name,
-    status: 'user',
+    role: 'user',
+    active: true,
     companyId: context.auth.token.companyId,
     createdAt: new Date(),
     createdBy: context.auth.uid

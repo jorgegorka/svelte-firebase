@@ -1,34 +1,35 @@
 <script>
   import { onDestroy } from 'svelte'
+
   import { FirebaseResults } from '../../../middleware/database'
   import { Employees } from '../../../middleware/database/employees'
   import { filterResults } from '../../../lib/filter_results'
   import { currentUser } from '../../../stores/current_user'
   import ListEmployees from './list.svelte'
-  import Form from './form.svelte'
+  import Header from './header/index.svelte'
+
   let employees = []
   let filteredEmployees = []
-  let employee = {}
-  let showModal = false
   let unsubscribeQuery = null
+  let active = true
 
-  const addEmployee = () => {
-    employee = { name: '', email: '', password: '', teamId: '000' }
-    showModal = true
-  }
-  const closeModal = () => {
-    showModal = false
-  }
+  $: fetchEmployees($currentUser.companyId, active)
 
-  $: fetchEmployees($currentUser.companyId)
-
-  const fetchEmployees = companyId => {
+  const fetchEmployees = (companyId, active) => {
     if (!companyId) return
-    unsubscribeQuery = Employees.findAll(companyId).onSnapshot(docs => {
+    unsubscribeQuery = Employees.findAll({ companyId, active }).onSnapshot(docs => {
       employees = FirebaseResults.map(docs)
       filteredEmployees = [...employees]
     })
   }
+
+  const updateFilter = event => {
+    if (active !== event.detail.active) {
+      active = event.detail.active
+    }
+    filterEmployees(event.detail.name)
+  }
+
   const filterEmployees = searchTerm => {
     if (searchTerm.length < 2) {
       filteredEmployees = [...employees]
@@ -37,34 +38,12 @@
     }
   }
 
-  const editEmployee = event => {
-    employee = event.detail
-    showModal = true
-  }
-
   onDestroy(() => {
     unsubscribeQuery()
   })
 </script>
 
-<style>
-  .new-employee {
-    margin-top: 2em;
-  }
-</style>
-
 <div>
-  <div class="row">
-    <div class="col s9">
-      <h4>Employees</h4>
-    </div>
-    <div class="col s3">
-      <a href="#" class="btn light-blue darken-1 secondary-content new-employee" on:click={addEmployee}>
-        New employee
-        <i class="material-icons left">add</i>
-      </a>
-    </div>
-  </div>
-  <ListEmployees on:editEmployee={editEmployee} {filteredEmployees} />
+  <Header on:updateFilter={updateFilter} />
+  <ListEmployees {filteredEmployees} />
 </div>
-<Form {employee} {showModal} on:cancel={closeModal} />

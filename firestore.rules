@@ -12,9 +12,9 @@ service cloud.firestore {
     }
 
     match /employees/{employeeId} {
-      allow read: if isSignedIn() && adminOrEmployee();
-      allow update: if companyAdmin()
-      allow delete: if companyAdmin() && notCreator()
+      allow read: if isSignedIn() && userBelongsToCompany();
+      allow create: if userAndAdmin();
+      allow update, delete: if companyAdmin()
     }
   }
 
