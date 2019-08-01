@@ -22,7 +22,7 @@
 </script>
 
 <div class="input-field">
-  <select bind:value class="validate" {id} class:invalid={error}>
+  <select bind:value {id} class:invalid={error}>
     {#each options as option (option.id)}
       <option value={option.id}>{option.name}</option>
     {/each}
