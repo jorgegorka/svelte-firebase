@@ -3,6 +3,7 @@ node_modules
 functions/node_modules
 public/bundle.*
 /dist
+src/config
 
 /tests/e2e/videos/
 /tests/e2e/screenshots/
