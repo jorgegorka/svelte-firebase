@@ -22,7 +22,7 @@
     showModal = false
     if (teamId) {
       Teams.remove(teamId).then(
-        notificationMessage.set({
+        notificationMessage.add({
           message: 'Team deleted successfully.',
           type: 'success-toast'
         })

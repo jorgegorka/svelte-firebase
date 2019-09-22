@@ -16,7 +16,7 @@
     const createEmployee = Functions.httpsCallable('createEmployee')
     createEmployee(employee)
       .then(() => {
-        notificationMessage.set({
+        notificationMessage.add({
           message: 'Employee added successfully.',
           type: 'success-toast'
         })
@@ -24,7 +24,7 @@
         navigateTo('/admin/employees')
       })
       .catch(error => {
-        notificationMessage.set({
+        notificationMessage.add({
           message: error.message,
           type: 'error-toast'
         })

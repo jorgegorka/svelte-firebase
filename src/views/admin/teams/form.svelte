@@ -65,14 +65,14 @@
       team.companyId = $currentUser.companyId
       if (team.id) {
         Teams.update(team.id, team).then(
-          notificationMessage.set({
+          notificationMessage.add({
             message: 'Team updated successfully.',
             type: 'success-toast'
           })
         )
       } else {
         Teams.add(team).then(
-          notificationMessage.set({
+          notificationMessage.add({
             message: 'Team created successfully.',
             type: 'success-toast'
           })

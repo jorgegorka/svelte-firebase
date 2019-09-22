@@ -82,7 +82,7 @@
         const createCompany = Functions.httpsCallable('createCompany')
         createCompany({ companyName: name })
           .then(() => {
-            notificationMessage.set({
+            notificationMessage.add({
               message: 'Your account was created successfully. Please log in',
               type: 'success-toast'
             })
@@ -92,7 +92,7 @@
             })
           })
           .catch(error => {
-            notificationMessage.set({ message: error.message, type: 'danger-toast' })
+            notificationMessage.add({ message: error.message, type: 'danger-toast' })
             console.log(error)
           })
       }

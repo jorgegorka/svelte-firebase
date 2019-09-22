@@ -13,7 +13,7 @@
 
   const logoutUser = () => {
     Auth.signOut().then(() => {
-      notificationMessage.set({ message: "You've been logged out successfully.", type: 'success-toast' })
+      notificationMessage.add({ message: "You've been logged out successfully.", type: 'success-toast' })
     })
   }
 </script>

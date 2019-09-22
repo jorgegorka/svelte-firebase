@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+
+.hintError {
+  @apply text-red-600;
+}
+
+.hint {
+  @apply text-gray-600;
+}
+
+.invalidInput {
+  @apply border-red-600 bg-red-200;
+}
+
+@tailwind utilities;

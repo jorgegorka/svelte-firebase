@@ -1,30 +1,38 @@
 <script>
-  import { onDestroy } from 'svelte'
+  import { onMount, onDestroy } from 'svelte'
   import { Route } from 'svelte-router-spa'
-  import Notification from '../../components/notification.svelte'
+  import Notification from '../../components/toast/index.svelte'
   import { notificationMessage } from '../../../stores/notification_message.js'
+  import Menu from './menu.svelte'
   import Footer from './footer.svelte'
+
   export let currentRoute
+  export let params = {}
+
   let visible = false
   let notification = ''
-  const unsubscribe = notificationMessage.subscribe(currentNotification => {
-    if (currentNotification.message && currentNotification.message.length > 0) {
-      notification = currentNotification
-      visible = true
-    } else {
-      visible = false
-    }
+
+  onMount(function() {
+    const unsubscribe = notificationMessage.subscribe(function(currentNotification) {
+      if (currentNotification.message && currentNotification.message.length > 0) {
+        notification = currentNotification
+        visible = true
+      } else {
+        visible = false
+      }
+    })
   })
 
-  onDestroy(() => {
+  onDestroy(function() {
     unsubscribe()
   })
 </script>
 
 <div class="app">
-  <Notification {notification} {visible} />
-  <section class="section">
+  <Menu />
+  <Notification notification={{ message: 'Hola a todo el mundo mundial' }} visible={true} />
+  <main>
     <Route {currentRoute} />
-  </section>
+  </main>
   <Footer />
 </div>

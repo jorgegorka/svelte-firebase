@@ -3,25 +3,28 @@
   export let id = 'textarea'
   export let label = ''
   export let value = ''
+  export let placeholder = ''
   export let icon = null
+  export let rows = 3
   export let error = false
   export let isFocused = false
-  export let errorMessage = 'Añade una descripción.'
+  export let hintMessage = 'Añade una descripción.'
 </script>
 
-<div class="input-field">
-  {#if icon}
-    <i class="material-icons prefix">{icon}</i>
-  {/if}
+<div class="form-element pb-4">
+  <label class="text-gray-700" for={id}>{label}</label>
+  <!-- svelte-ignore a11y-autofocus -->
   <textarea
     bind:value
+    autofocus={isFocused}
+    on:blur
     on:input={() => (error = false)}
     name={inputName}
-    {id}
-    class="materialize-textarea"
-    class:invalid={error}
-    autofocus={isFocused}
-    on:blur />
-  <label for={id}>{label}</label>
-  <span class="helper-text" data-error={errorMessage} data-success="right" />
+    type="text"
+    {rows}
+    class="form-textarea mt-1 block w-full text-lg z-50 {icon ? 'pl-10' : ''}"
+    class:invalidInput={error}
+    {placeholder} />
+
+  <span class="text-sm {error ? 'hintError' : 'hint'}">{hintMessage}</span>
 </div>

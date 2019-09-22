@@ -4,31 +4,17 @@
   import LoginForm from './form.svelte'
 </script>
 
-<style>
-  .mt10 {
-    padding-top: 1rem;
-  }
-</style>
+<div class="flex items-center justify-center h-screen w-screen bg-gray-100">
+  <div class="shadow-lg rounded-lg bg-white">
+    <h1 class="mt-6 text-2xl text-blue-500 text-center">Svelte & Firebase</h1>
 
-<main>
-  <div class="container">
-    <div class="row">
-      <div class="col s8 offset-s2">
-        <div class="card card-login">
-          <div class="card-login-splash">
-            <div class="wrapper">
-              <h3 class="center-align mt10">Svelte & Firebase</h3>
-            </div>
-          </div>
-          <div class="card-content">
-            <span class="card-title center-align">Log In</span>
-            <LoginForm />
-            <p>
-              <Navigate to="signup">Create an account.</Navigate>
-            </p>
-          </div>
-        </div>
-      </div>
+    <div class="card-content">
+      <p class="p-6 text-center">Log In to</p>
+      <LoginForm />
+      <p class="p-6">
+        New user?
+        <Navigate to="signup">Create an account</Navigate>
+      </p>
     </div>
   </div>
-</main>
+</div>

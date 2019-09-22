@@ -31,13 +31,13 @@
     if (employee.id) {
       Employees.toggleStatus(employee)
         .then(
-          notificationMessage.set({
+          notificationMessage.add({
             message: 'Employee status updated successfully',
             type: 'success-toast'
           })
         )
         .catch(error => {
-          notificationMessage.set({
+          notificationMessage.add({
             message: error.message,
             type: 'error-toast'
           })

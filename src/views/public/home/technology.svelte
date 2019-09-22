@@ -1,8 +1,40 @@
-<style>
-  .logo-image {
-    height: 50px;
-  }
-</style>
+<script>
+  import Opinions from '../../components/opinions/index.svelte'
+</script>
+
+<div class="py-12 bg-gray-100 text-center text-gray-800">
+  <h2 class=" text-2xl font-display font-bold lg:text-4xl">
+    Qué dicen
+    <span class="text-landBg">nuestros clientes</span>
+  </h2>
+  <p class="mt-4 mx-2 lg:mx-12 text-sm lg:text-xl">
+    Para nosotros es esencial la comunicación continua con los clientes, algo que nos permite observar y detectar sus
+    necesidades y, de manera proactiva, proponer y elaborar soluciones. Estamos muy agradecidos a todos nuestros
+    clientes por contar con nosotros.
+  </p>
+  <div class="pb-12 flex flex-col lg:flex-row">
+    <Opinions
+      name="Svelte"
+      bio="Build boilerplate-free components using languages you already know like HTML, CSS and JavasScript."
+      imageUrl="/images/svelte-logo.svg" />
+    <Opinions
+      name="Firebase"
+      bio="Database, hosting, authentication, cloud functions, storage, analytics, in-app messaging, performance
+      monitoring and more." />
+    <Opinions
+      name="Svelte Router"
+      bio="A router for Svelte and your single page applications."
+      imageUrl="/images/svelte-router-logo.png" />
+    <Opinions
+      name="Validate.js"
+      bio="A declarative way of validating javascript objects."
+      imageUrl="/images/validate-js-logo.png" />
+    <Opinions
+      name="Tailwind CSS"
+      bio="A utility-first CSS framework for rapidly building custom designs."
+      imageUrl="/images/svelte-router-logo.png" />
+  </div>
+</div>
 
 <div class="container">
   <!-- <h2 class="center brown-text">Amazing technologies already included</h2> -->

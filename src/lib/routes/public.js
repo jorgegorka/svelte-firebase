@@ -6,7 +6,8 @@ import PublicLayout from '../../views/public/layout/index.svelte'
 const publicRoutes = [
   {
     name: '/',
-    component: PublicIndex
+    component: PublicIndex,
+    layout: PublicLayout
   },
   { name: 'login', component: Login, layout: PublicLayout },
   { name: 'signup', component: Signup, layout: PublicLayout }

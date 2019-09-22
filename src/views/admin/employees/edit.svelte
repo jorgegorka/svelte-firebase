@@ -16,7 +16,7 @@
     const employee = { ...event.detail }
     Employees.update(id, employee)
       .then(() => {
-        notificationMessage.set({
+        notificationMessage.add({
           message: 'Employee updated successfully',
           type: 'success-toast'
         })
@@ -24,7 +24,7 @@
       })
       .catch(error => {
         console.log(error)
-        notificationMessage.set({
+        notificationMessage.add({
           message: error.message,
           type: 'error-toast'
         })

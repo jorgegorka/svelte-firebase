@@ -1,0 +1,13 @@
+.primary-toast {
+  background-color: #0277bd;
+}
+.success-toast {
+  background-color: #2e7d32;
+}
+.danger-toast {
+  background-color: #c62828;
+}
+
+.gradient {
+  background: linear-gradient(90deg, #d53369 0%, #daae51 100%);"
+}

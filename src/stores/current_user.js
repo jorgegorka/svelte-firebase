@@ -1,19 +1,19 @@
-import { writable } from "svelte/store";
+import { writable } from 'svelte/store'
 
-const userInfo = writable({});
+const userInfo = writable({})
 
-const setUser = user => {
-  userInfo.set(user);
-};
+function setUser(user) {
+  userInfo.set(user)
+}
 
-const removeUser = () => {
-  userInfo.set({});
-};
+function removeUser() {
+  userInfo.set({})
+}
 
 const currentUser = {
   subscribe: userInfo.subscribe,
   set: setUser,
   remove: removeUser
-};
+}
 
-export { currentUser };
+export { currentUser }
