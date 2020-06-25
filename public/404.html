@@ -16,9 +16,32 @@
     <link rel="stylesheet" href="/stylesheets/custom.css" />
     <link rel="stylesheet" href="/bundle.css" />
     <link rel="stylesheet" href="/plugins.css" />
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .not-found {
+        margin: 3rem;
+      }
+    </style>
   </head>
 
   <body>
-    <script src="/bundle.js"></script>
+    <section class="not-found">
+      <h1 class="title">Page not found!</h1>
+      <h3 class="subtitle">I've searched everywhere but it wasn't there. I'm as puzzled as you are!</h3>
+      <h5>
+        Return to the
+        <a href="/">homepage</a>
+      </h5>
+    </section>
   </body>
 </html>
