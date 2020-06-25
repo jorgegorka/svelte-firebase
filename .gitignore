@@ -2,6 +2,7 @@
 node_modules
 functions/node_modules
 public/bundle.*
+src/config/settings.js
 /dist
 src/config
 
